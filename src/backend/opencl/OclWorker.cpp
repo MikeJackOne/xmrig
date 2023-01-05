@@ -35,10 +35,6 @@
 #   include "backend/opencl/runners/OclRxVmRunner.h"
 #endif
 
-#ifdef XMRIG_ALGO_ASTROBWT
-#   include "backend/opencl/runners/OclAstroBWTRunner.h"
-#endif
-
 #ifdef XMRIG_ALGO_KAWPOW
 #   include "backend/opencl/runners/OclKawPowRunner.h"
 #endif
@@ -87,12 +83,6 @@ xmrig::OclWorker::OclWorker(size_t id, const OclLaunchData &data) :
     case Algorithm::ARGON2:
 #       ifdef XMRIG_ALGO_ARGON2
         m_runner = nullptr;
-#       endif
-        break;
-
-    case Algorithm::ASTROBWT:
-#       ifdef XMRIG_ALGO_ASTROBWT
-        m_runner = new OclAstroBWTRunner(id, data);
 #       endif
         break;
 
